@@ -1,8 +1,18 @@
 @echo off
 
-set db_name=world
+set db_name=%1
 set path=%path%;D:\PostgreSQL\bin;D:\Green\Git\bin;D:\Green\Git\usr\bin
 set PGPASSWORD=123456
+rem SET ICU_DATA=D:\Green\icu4c\commondata
+
+set d1=%~dp0%
+if "%db_name%"=="" (
+	set d1=%d1:\= %
+	for %%i in (%d1%) do (
+		set db_name=%%i
+	)
+)
+echo %db_name%
 
 dropdb -U postgres %db_name%
 createdb -U postgres %db_name%
@@ -22,5 +32,7 @@ for /f %%i in ('dir /b/s %keyword%') do (
 		shp2pgsql -D -W gb18030 %%i %%j | psql -U postgres %db_name%
 	)
 )
+
+echo 成功将数据导入PostGis空间数据库：“%db_name%”中。
 
 pause
