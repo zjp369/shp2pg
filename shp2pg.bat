@@ -15,7 +15,9 @@ rem shp2pgsql -D world.shp | psql -U postgres %db_name%
 set keyword=*.shp
 for /f  %%i in ('dir /b/s %keyword%') do (
 	echo %%~ni
-	shp2pgsql -D -W gbk %%i | psql -U postgres %db_name%
+	rem shp2pgsql -D -W gbk %%i | psql -U postgres %db_name%
+	shp2pgsql -D -W gbk %%i > %%i.sql
+	iconv -f gbk -t utf-8 %%i.sql | psql -U postgres %db_name%
 )
 
 pause
