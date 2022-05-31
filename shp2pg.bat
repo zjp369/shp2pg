@@ -6,8 +6,8 @@ set PGPASSWORD=123456
 rem SET ICU_DATA=D:\Green\icu4c\commondata
 
 set d1=%~dp0%
+set d1=%d1:\= %
 if "%db_name%"=="" (
-	set d1=%d1:\= %
 	for %%i in (%d1%) do (
 		set db_name=%%i
 	)
