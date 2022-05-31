@@ -6,6 +6,18 @@
 入空间数据库功能。该批处理可以把当前目录中的所有shp文件逐一入库，省去图形界面反复选取添加shp文件的麻烦，也避免
 了漏选、重选等问题。
 
+==============================
+Importing with configuration: 美国, public, geom, C:\t\美国.shp, mode=c, dump=1, simple=0, geography=0, index=1, shape=1, srid=0
+C:\t\美国.shp: dbf file (.dbf) can not be opened.
+Shapefile import failed.
+Connecting:  host=localhost port=5432 user=postgres password='******' dbname=w client_encoding=UTF8
+
+==============================
+Importing with configuration: 美国, public, geom, C:\t\美国.shp, mode=c, dump=1, simple=0, geography=0, index=1, shape=0, srid=0
+C:\t\美国.shp: dbf file (.dbf) can not be opened.
+Shapefile import failed.
+
+
 #### 软件架构
 软件架构说明
 
