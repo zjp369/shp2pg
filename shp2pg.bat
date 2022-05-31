@@ -10,6 +10,12 @@ psql -U postgres -d %db_name% -c "CREATE EXTENSION IF NOT EXISTS postgis"
 
 rem shp2pgsql -D world.shp > world.shp.sql
 rem psql -U postgres %db_name% < world.shp.sql
-shp2pgsql -D world.shp | psql -U postgres %db_name%
+rem shp2pgsql -D world.shp | psql -U postgres %db_name%
+
+set keyword=*.shp
+for /f  %%i in ('dir /b/s %keyword%') do (
+	rem echo %%~ni
+	shp2pgsql -D -d -W gbk %%i | psql -U postgres %db_name%
+)
 
 pause
