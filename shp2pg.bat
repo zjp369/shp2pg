@@ -19,10 +19,8 @@ for /f %%i in ('dir /b/s %keyword%') do (
 	rem shp2pgsql -D -W gbk %%i | iconv -f gbk -t utf-8 | psql -U postgres %db_name%
 	for /f %%j in ('echo %%~ni ^| iconv -f gb18030 -t utf-8') do (
 		rem echo %%j
-		shp2pgsql -D -W gb18030 %%i %%j > %%i.sql
+		shp2pgsql -D -W gb18030 %%i %%j | psql -U postgres %db_name%
 	)
-	psql -U postgres %db_name% < %%i.sql
-	rem del %%i.sql
 )
 
 pause
