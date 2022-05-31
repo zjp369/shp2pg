@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 
 set db_name=world
 set path=%path%;D:\PostgreSQL\bin;D:\Green\Git\bin;D:\Green\Git\usr\bin
@@ -14,8 +14,8 @@ rem shp2pgsql -D world.shp | psql -U postgres %db_name%
 
 set keyword=*.shp
 for /f  %%i in ('dir /b/s %keyword%') do (
-	rem echo %%~ni
-	shp2pgsql -D -d -W gbk %%i | psql -U postgres %db_name%
+	echo %%~ni
+	shp2pgsql -D -W gbk %%i | psql -U postgres %db_name%
 )
 
 pause
