@@ -1,1 +1,1 @@
-shp2pg.bat world > info.txt
+shp2pg.bat world 2> info.txt
